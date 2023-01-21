@@ -9,6 +9,9 @@ function getComputerChoice(){
 
 console.log(getComputerChoice());
 
+const computerSelection = getComputerChoice();
+const playerSelection = prompt("rock, scissors or paper");
+
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === "rock" && computerSelection === "scissors") {
     return "player wins";
