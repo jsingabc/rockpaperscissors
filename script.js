@@ -1,16 +1,17 @@
 
 
-  const choices = ['rock', 'scissors', 'paper'];
+const choices = ['rock', 'scissors', 'paper'];
   const cpuChoice = Math.floor(Math.random() * choices.length);  
 
 function getComputerChoice(){
     return choices[cpuChoice];
 }
 
-console.log(getComputerChoice());
+//console.log(getComputerChoice());
 
 const computerSelection = getComputerChoice();
 const playerSelection = prompt("rock, scissors or paper");
+
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === "rock" && computerSelection === "scissors") {
@@ -29,6 +30,8 @@ function playRound(playerSelection, computerSelection) {
     return "draw";
   }
 }
-  console.log(playRound(playerSelection, computerSelection));
 
+  console.log(playerSelection, computerSelection);
+  console.log(playRound(playerSelection, computerSelection));
   
+
