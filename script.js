@@ -10,7 +10,7 @@ function getComputerChoice(){
 //console.log(getComputerChoice());
 
 const computerSelection = getComputerChoice();
-const playerSelection = prompt("rock, scissors or paper");
+//const playerSelection = prompt("rock, scissors or paper");
 
 
 function playRound(playerSelection, computerSelection) {
@@ -31,7 +31,24 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-  console.log(playerSelection, computerSelection);
-  console.log(playRound(playerSelection, computerSelection));
+  //console.log(playerSelection, computerSelection);
+  //console.log(playRound(playerSelection, computerSelection));
+
+  const game = () => {
+    let results = new Array();
+
+    for(let i = 0; i < 5; i++) {
+      const user = prompt('Enter choice: ');
+      const computerChoice = getComputerChoice();
+
+      results.push(playRound(user, computerChoice));
+      alert(results);
+    }
+
+    return results;
+
+  }
+
+  console.log(game());
   
 
