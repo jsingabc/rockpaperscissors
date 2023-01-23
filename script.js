@@ -42,7 +42,7 @@ function playRound(playerSelection, computerSelection) {
       const computerChoice = getComputerChoice();
 
       results.push(playRound(user, computerChoice));
-      alert(results);
+      alert(results[i]);
     }
 
     return results;
