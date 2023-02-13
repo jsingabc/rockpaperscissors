@@ -1,54 +1,123 @@
+const choices = ["rock","scissors","paper"]; // my array
 
-
-const choices = ['rock', 'scissors', 'paper'];
-  const cpuChoice = Math.floor(Math.random() * choices.length);  
-
-function getComputerChoice(){
-    return choices[cpuChoice];
+const cpu = () => {    //this is generated via cpu() ONLY
+    const cpuChoice = choices[Math.floor(Math.random() * choices.length)];
+    return cpuChoice;
 }
 
-//console.log(getComputerChoice());
+var playerWins = 0;
+var cpuWins = 0;
 
-const computerSelection = getComputerChoice();
-//const playerSelection = prompt("rock, scissors or paper");
+function playRound(playerSelection, computerSelection) {  //function that decides a winner
 
-
-function playRound(playerSelection, computerSelection) {
+  
+   
   if (playerSelection === "rock" && computerSelection === "scissors") {
+    playerWins++
     return "player wins";
-  } else if (playerSelection === "scissors" && computerSelection === "rock") { 
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    cpuWins++;
     return "cpu wins";
   } else if (playerSelection === "rock" && computerSelection === "paper") {
+    cpuWins++;
     return "cpu wins";
   } else if (playerSelection === "paper" && computerSelection === "rock") {
+    playerWins++;
     return "player wins";
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
+    cpuWins++;
     return "cpu wins";
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
+    playerWins++;
     return "player wins";
   } else {
     return "draw";
   }
+ 
 }
+ 
 
-  //console.log(playerSelection, computerSelection);
-  //console.log(playRound(playerSelection, computerSelection));
+var rkBtn = document.createElement('button');  //rock display button
+rkBtn.textContent = 'rock';
+document.body.appendChild(rkBtn);
 
-  const game = () => {
-    let results = new Array();
 
-    for(let i = 0; i < 5; i++) {
-      const user = prompt('Enter choice: ');
-      const computerChoice = getComputerChoice();
+var ssBtn = document.createElement('button'); //scissors display button
+ssBtn.textContent = 'scissors';
+document.body.appendChild(ssBtn);
 
-      results.push(playRound(user, computerChoice));
-      alert(results[i]);
-    }
 
-    return results;
+var paperBtn = document.createElement('button'); //paper display button
+paperBtn.textContent = 'paper';
+document.body.appendChild(paperBtn);
 
-  }
 
-  console.log(game());
+const resultDiv = document.createElement('div'); //create div
+const userScore = document.createElement('p'); // creates <p> user score
+const cpuScore = document.createElement('p');  // creates <p> cpu score
+
+
+userScore.textContent = playerWins; // add the user score as a display
+resultDiv.appendChild(userScore); // adds user score to result dive
+cpuScore.textContent = cpuWins;  // add the cpu score as a display
+resultDiv.appendChild(cpuScore); // adds cpu score to result dive
+
+document.body.appendChild(resultDiv); //appends content to html
+
+
+function playGame() {
   
 
+if (playerWins <= 5 || cpuWins <= 5) {
+
+  
+
+  rkBtn.addEventListener("click", function(){ 
+    var rkBtn = "rock";
+    var playerSelection = rkBtn;
+    let computerSelection = cpu();
+    alert(playerSelection);
+    alert(computerSelection);
+    alert(playRound(playerSelection, computerSelection));
+    
+  });
+
+
+  ssBtn.addEventListener("click", function(){ 
+    var ssBtn = "scissors";
+    var playerSelection = ssBtn;
+    let computerSelection = cpu();
+    alert(playerSelection);
+    alert(computerSelection);
+    alert(playRound(playerSelection, computerSelection));
+    
+  });
+
+
+  paperBtn.addEventListener("click", function(){ 
+    var paperBtn = "paper";
+    var playerSelection = paperBtn;
+    let computerSelection = cpu();
+    alert(playerSelection);
+    alert(computerSelection);
+    alert(playRound(playerSelection, computerSelection));
+    
+  });
+
+} else {
+
+const finalScore = document.createElement('p');  // write a function that reports final results
+finalDiv.textContent = ' The final score is ' + playerWins + ' : ' + cpuWins + ' .';
+document.body.appendChild(finalDiv); 
+
+ } 
+}
+
+const startGame = document.createElement('button');
+startGame.textContent = 'start game';
+document.body.appendChild(startGame);
+
+startGame.addEventListener("click", function(){
+  alert("Choose rock scissors or paper to start the game.");
+  playGame();
+});
