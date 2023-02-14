@@ -13,22 +13,28 @@ function playRound(playerSelection, computerSelection) {  //function that decide
   
    
   if (playerSelection === "rock" && computerSelection === "scissors") {
-    playerWins++
+    playerWins++;
+    userScore.textContent = playerWins;
     return "player wins";
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
     cpuWins++;
+    cpuScore.textContent = cpuWins;
     return "cpu wins";
   } else if (playerSelection === "rock" && computerSelection === "paper") {
     cpuWins++;
+    cpuScore.textContent = cpuWins;
     return "cpu wins";
   } else if (playerSelection === "paper" && computerSelection === "rock") {
     playerWins++;
+    userScore.textContent = playerWins;
     return "player wins";
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
     cpuWins++;
+    cpuScore.textContent = cpuWins;
     return "cpu wins";
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerWins++;
+    userScore.textContent = playerWins;
     return "player wins";
   } else {
     return "draw";
@@ -66,12 +72,6 @@ document.body.appendChild(resultDiv); //appends content to html
 
 
 function playGame() {
-  
-
-if (playerWins <= 5 || cpuWins <= 5) {
-
-  
-
   rkBtn.addEventListener("click", function(){ 
     var rkBtn = "rock";
     var playerSelection = rkBtn;
@@ -82,6 +82,18 @@ if (playerWins <= 5 || cpuWins <= 5) {
     
   });
 
+  rkBtn.addEventListener("click", function(){
+    alert(playerWins);
+    alert(cpuWins);
+    if (playerWins === 2 || cpuWins === 2) {
+    alert("game over, thanks for playing");
+    return;
+    }
+    else {
+    alert("continue");
+    }
+  });
+  
 
   ssBtn.addEventListener("click", function(){ 
     var ssBtn = "scissors";
@@ -90,9 +102,19 @@ if (playerWins <= 5 || cpuWins <= 5) {
     alert(playerSelection);
     alert(computerSelection);
     alert(playRound(playerSelection, computerSelection));
-    
   });
 
+  ssBtn.addEventListener("click", function(){
+    alert(playerWins);
+    alert(cpuWins);
+    if (playerWins === 2 || cpuWins === 2) {
+    alert("game over, thanks for playing");
+    return;
+    }
+    else {
+    alert("continue");
+    }
+  });
 
   paperBtn.addEventListener("click", function(){ 
     var paperBtn = "paper";
@@ -101,17 +123,22 @@ if (playerWins <= 5 || cpuWins <= 5) {
     alert(playerSelection);
     alert(computerSelection);
     alert(playRound(playerSelection, computerSelection));
-    
   });
 
-} else {
-
-const finalScore = document.createElement('p');  // write a function that reports final results
-finalDiv.textContent = ' The final score is ' + playerWins + ' : ' + cpuWins + ' .';
-document.body.appendChild(finalDiv); 
-
- } 
+  paperBtn.addEventListener("click", function(){
+    alert(playerWins);
+    alert(cpuWins);
+    if (playerWins === 2 || cpuWins === 2) {
+    alert("game over, thanks for playing");
+    return;
+    }
+    else {
+    alert("continue");
+    }
+  });
 }
+
+
 
 const startGame = document.createElement('button');
 startGame.textContent = 'start game';
@@ -120,4 +147,12 @@ document.body.appendChild(startGame);
 startGame.addEventListener("click", function(){
   alert("Choose rock scissors or paper to start the game.");
   playGame();
+});
+
+const checkButton = document.createElement('button');
+checkButton.textContent = 'reset game';
+document.body.appendChild(checkButton);
+
+checkButton.addEventListener(`click`, function () {
+  window.location.reload();
 });
